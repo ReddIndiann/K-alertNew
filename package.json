@@ -10,6 +10,8 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "@tanstack/react-query": "^5.72.0",
+    "axios": "^1.8.4",
     "careerbx": "file:",
     "framer-motion": "^12.5.0",
     "k-alertNew": "file:",

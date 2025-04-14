@@ -1,23 +1,42 @@
+import { label } from "framer-motion/client";
 import React from "react";
-interface InputFieldProps{
 
-    id: string;
-    label: string;
-    type: string;
-    placeholder: string;
-    value: string;
-    onChange: React.ChangeEventHandler<HTMLInputElement>;
-    required?: boolean;
+interface InputFieldProp{
+label: string;
+placeholder: string;
+id: string;
+value:string;
+onChange: React.ChangeEventHandler<HTMLInputElement>;
+
+type:string;
+
 }
 
-export const InputField: React.FC<InputFieldProps> =({id,label,type,placeholder,value,onChange,required})=>{
+interface InputBtn {
+onClick: React.MouseEventHandler<HTMLButtonElement>;
+loading?: boolean;
+label:string;
+}
 
-    
+export const InputField : React.FC<InputFieldProp> =({
+    value,placeholder,id,onChange,type,label
+})=>{
+return(
+
+    <div className="flex-col p-5">
+
+        <label htmlFor={id} className="font-bold text-base">{label}</label>
+        <input placeholder={placeholder} value={value} onChange={onChange} type={type} />
+    </div>
+)
+
+
+}
+
+export const InputBtn :  React.FC<InputBtn> =({onClick ,label,loading})=>{
 
     return(
-        <div className="flex-col">
-            <label htmlFor={id} className="block text-sm font-medium text-gray-700">{label}</label>
-            <input type={type} className="w=full mt-5" placeholder={placeholder} value={value} onChange={onChange} required={required}/>
-        </div>
+        <button onClick={()=>(onClick) } disabled ={loading}>{label}</button>
     )
+
 }
